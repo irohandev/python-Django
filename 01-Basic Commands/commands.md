@@ -1,133 +1,122 @@
-# --------------------------------------------
-# 🌐 1. Create & Activate Virtual Environment
-# --------------------------------------------
+# Django Commands Reference
 
-# Install virtualenv (if not already installed)
+## 🌐 Virtual Environment
+```bash
+# Install virtualenv
 pip install virtualenv
 
-# Create virtual environment named 'venv'
+# Create virtual environment
 virtualenv venv
 
 # Activate virtual environment
-# For Windows:
+# Windows:
 venv\Scripts\activate
-# For macOS/Linux:
+# macOS/Linux:
 source venv/bin/activate
 
+# Deactivate virtual environment
+deactivate
+```
 
-# ----------------------------
-# 📦 2. Install Django
-# ----------------------------
+## 📦 Django Installation
+```bash
+# Install Django
 pip install django
 
 # Check Django version
 django-admin --version
+```
 
-
-# ----------------------------
-# 🚀 3. Start a Django Project
-# ----------------------------
+## 🚀 Project & App Creation
+```bash
+# Create Django project
 django-admin startproject project_name
-
 cd project_name
 
-
-# ----------------------------
-# 📱 4. Start a Django App
-# ----------------------------
+# Create Django app
 python manage.py startapp app_name
+```
 
-# Register the app in settings.py:
-# INSTALLED_APPS = [
-#     ...,
-#     'app_name',
-# ]
-
-
-# ----------------------------
-# 🧱 5. Run Migrations
-# ----------------------------
-# Create migration files for your models
+## 🧱 Database Commands
+```bash
+# Create migration files
 python manage.py makemigrations
 
-# Apply migrations to the database
+# Apply migrations
 python manage.py migrate
 
-# Optional: See SQL for a migration
+# View SQL for migration
 python manage.py sqlmigrate app_name 0001
 
-# Show all migrations and their status
+# Show migration status
 python manage.py showmigrations
+```
 
-
-# ----------------------------
-# 👤 6. Create Superuser
-# ----------------------------
+## 👤 User Management
+```bash
+# Create superuser
 python manage.py createsuperuser
+```
 
-
-# ----------------------------
-# 🌐 7. Run Development Server
-# ----------------------------
-# Run on default port 8000
+## 🌐 Server Commands
+```bash
+# Run development server (default port 8000)
 python manage.py runserver
 
 # Run on custom port
 python manage.py runserver 8080
+```
 
-
-# ----------------------------
-# 🐚 8. Open Django Shell
-# ----------------------------
+## 🐚 Shell & Database
+```bash
+# Open Django shell
 python manage.py shell
 
-
-# ----------------------------
-# 🗃️ 9. Access DB Shell (if using SQLite)
-# ----------------------------
+# Open database shell
 python manage.py dbshell
+```
 
-
-# ----------------------------
-# 🎨 10. Collect Static Files (Production)
-# ----------------------------
+## 🎨 Static Files
+```bash
+# Collect static files
 python manage.py collectstatic
+```
 
-
-# ----------------------------
-# ✅ 11. Run Tests (if any)
-# ----------------------------
+## ✅ Testing
+```bash
+# Run all tests
 python manage.py test
 
+# Run specific app tests
+python manage.py test app_name
+```
 
-# ----------------------------
-# 🆘 12. Help Commands
-# ----------------------------
-# List all available Django commands
+## 🆘 Help Commands
+```bash
+# List all Django commands
 python manage.py help
 
-# Help for a specific command
+# Help for specific command
 python manage.py help runserver
+```
 
-
-# ----------------------------
-# 📦 13. Requirements File
-# ----------------------------
-# Freeze all installed packages to requirements.txt
+## 📦 Requirements
+```bash
+# Create requirements file
 pip freeze > requirements.txt
 
+# Install from requirements
+pip install -r requirements.txt
+```
 
-# ----------------------------
-# 🟢 14. Deploy with Gunicorn (Production Server)
-# ----------------------------
+## 🟢 Production (Gunicorn)
+```bash
 # Install Gunicorn
 pip install gunicorn
 
-# Run project using Gunicorn
+# Run with Gunicorn
 gunicorn project_name.wsgi
 
-
-# ----------------------------
-# 🔴 15. Deactivate Virtual Environment
-# ----------------------------
-deactivate
+# Run with custom bind
+gunicorn project_name.wsgi --bind 0.0.0.0:8000
+```
