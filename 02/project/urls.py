@@ -2,19 +2,26 @@
 
 from django.contrib import admin
 from django.urls import path
-from app_1 import views  # Importing views from the app named 'app_1'
+from app_1 import views  # Importing views module from the app named 'app_1'
 
-# from app_1.views import function_1  - we can do this also by importing the specific view function 'function_1' from 'app_1.views'
-
+# Alternatively, we could import specific view functions directly:
+# from app_1.views import function_1
 
 urlpatterns = [
-    # This URL pattern is for the Django admin panel. It connects the '/admin/' route to the default Django admin interface.
+    # URL pattern for the Django admin interface.
+    # It connects the URL path '/admin/' to Django's built-in admin site.
     path('admin/', admin.site.urls),
 
-    # In the path function:
-    # - The first argument is the URL route (e.g., 'function_1/').
-    # - The second argument is the view function that will handle the request when this URL is accessed (here, 'views.function_1').
-    # - The third argument is an optional name for this URL pattern (here, 'name="function_1"'). It's useful for reverse URL resolution.
-    # Only the route and view function are required. The 'name' parameter is optional and can be left out if not needed.
-    path('function_1/', views.function_1, name='function_1'),  # Mapping the 'function_1/' route to the 'function_1' view
+    # URL pattern mapping:
+    # - 'function_1/' is the URL route.
+    # - 'views.function_1' is the view function to handle requests to this route.
+    # - {'status': 'OK'} is an optional dictionary of keyword arguments passed to the view.
+    # - 'name' assigns a unique identifier to this URL pattern useful for reverse lookups.
+    path('function_1/', views.function_1, {'status': 'OK'}, name='function_1'),
+
+    # Another URL pattern for the same view function 'function_1',
+    # but accessed via the route 'function_2/'.
+    # Since no kwargs are passed here, the view will use default values.
+    # This allows the same logic to be triggered by different URLs.
+    path('function_2/', views.function_1, name='function_1'),
 ]
