@@ -25,3 +25,14 @@ def learn_Django(req):
 def learn_Django_template(req):
     # Presentation Logic: Rendering an HTML template located at 'templates/course/django.html'
     return render(req, template_name='course/django.html')
+
+
+# This view function demonstrates how to pass context data (dynamic variables) to templates
+def greet(req):
+    # Creating a context dictionary with dynamic data to send to the template
+    fullname = {
+        'fname': 'Rohan Dev Singh',
+    }
+
+    # Rendering the template 'course/greet.html' with the context data
+    return render(req, template_name='course/greet.html', context=fullname)
