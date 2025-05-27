@@ -3,6 +3,7 @@
 from django.contrib import admin
 from django.urls import path
 from app_1 import views  # Importing views module from the app named 'app_1'
+from app_2.views import myapp2  # Importing a specific view function from 'app_2'
 
 # Alternatively, we could import specific view functions directly:
 # from app_1.views import function_1
@@ -24,4 +25,6 @@ urlpatterns = [
     # Since no kwargs are passed here, the view will use default values.
     # This allows the same logic to be triggered by different URLs.
     path('function_2/', views.function_1, name='function_1'),
+
+    path('app_2/', myapp2, name='myapp2'),  # URL pattern for 'myapp2' view in 'app_2'
 ]
