@@ -11,9 +11,9 @@ course/
 ├── static/
 │   └── course/
 │       ├── css/
-        |   └── style.css
+|       |   └── style.css
 │       ├── js/
-        |   └── script.js
+|        |   └── script.js
 │       └── images/
 │           └── img.jpg
 ├── templates/
