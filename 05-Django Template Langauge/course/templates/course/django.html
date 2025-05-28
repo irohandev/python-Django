@@ -9,13 +9,13 @@
 
   <h1>Django Template Example Showcase</h1>
 
-  <!-- Basic Variable Display -->
+  <!-- 1. Displaying basic variables using double curly braces -->
   <h2>1. Display Variables</h2>
   <p>Course Name: {{ name }}</p>
   <p>Duration: {{ duration }}</p>
   <p>Total Seats: {{ seats }}</p>
 
-  <!-- If Tag -->
+  <!-- 2. Using if-else condition to check if 'name' is provided -->
   <h2>2. Conditional Rendering (if/else)</h2>
   {% if name %}
     <p>Hello, the course name is available.</p>
@@ -23,62 +23,62 @@
     <p>No course name provided.</p>
   {% endif %}
 
-  <!-- for loop with list -->
+  <!-- 3. Looping through a list using 'for' tag -->
   <h2>3. Looping Through List</h2>
   <ul>
     {% for student in students %}
-      <li>{{ forloop.counter }}. {{ student }}</li>
+      <li>{{ forloop.counter }}. {{ student }}</li> <!-- forloop.counter shows index starting from 1 -->
     {% empty %}
-      <li>No students found.</li>
+      <li>No students found.</li> <!-- Displayed if the list is empty -->
     {% endfor %}
   </ul>
 
-  <!-- for loop with dictionary -->
+  <!-- 4. Looping through a dictionary (key-value pair) -->
   <h2>4. Looping Through Dictionary</h2>
   <ul>
     {% for key, value in course_info.items %}
-      <li><strong>{{ key|capfirst }}:</strong> {{ value }}</li>
+      <li><strong>{{ key|capfirst }}:</strong> {{ value }}</li> <!-- capfirst capitalizes the first letter -->
     {% endfor %}
   </ul>
 
-  <!-- Template Filters -->
+  <!-- 5. Demonstrating various built-in template filters -->
   <h2>5. Template Filters</h2>
   <p>Uppercase: {{ name|upper }}</p>
   <p>Lowercase: {{ name|lower }}</p>
   <p>First letter capital: {{ name|capfirst }}</p>
-  <p>Word Truncate (3): {{ duration|truncatewords:3 }}</p>
-  <p>Char Truncate (10): {{ duration|truncatechars:10 }}</p>
-  <p>Slice (first 6 chars): {{ name|slice:":6" }}</p>
-  <p>Length of name: {{ name|length }}</p>
+  <p>Word Truncate (3): {{ duration|truncatewords:3 }}</p> <!-- Trims after 3 words -->
+  <p>Char Truncate (10): {{ duration|truncatechars:10 }}</p> <!-- Trims after 10 characters -->
+  <p>Slice (first 6 chars): {{ name|slice:":6" }}</p> <!-- Slices string from 0 to 6 -->
+  <p>Length of name: {{ name|length }}</p> <!-- Returns length of string -->
 
-  <!-- Default filter for empty/None -->
+  <!-- 6. Showing default values when variable is empty or None -->
   <h2>6. Default Filter (Fallback Value)</h2>
-  <p>Empty var: {{ empty_var|default:"No value provided" }}</p>
-  <p>None var: {{ none_var|default_if_none:"Null value replaced" }}</p>
+  <p>Empty var: {{ empty_var|default:"No value provided" }}</p> <!-- Used when variable is empty -->
+  <p>None var: {{ none_var|default_if_none:"Null value replaced" }}</p> <!-- Used when variable is None -->
 
-  <!-- Float formatting -->
+  <!-- 7. Formatting float numbers with floatformat filter -->
   <h2>7. Float Format</h2>
-  <p>p1 (3 decimal): {{ p1|floatformat:3 }}</p>
-  <p>p2 (0 decimal): {{ p2|floatformat:0 }}</p>
-  <p>p3 (default): {{ p3|floatformat }}</p>
-  <p>p3 (remove trailing zero): {{ p3|floatformat:-2 }}</p>
+  <p>p1 (3 decimal): {{ p1|floatformat:3 }}</p> <!-- Formats to 3 decimal places -->
+  <p>p2 (0 decimal): {{ p2|floatformat:0 }}</p> <!-- Rounds to nearest whole number -->
+  <p>p3 (default): {{ p3|floatformat }}</p> <!-- Default rounding (1 decimal) -->
+  <p>p3 (remove trailing zero): {{ p3|floatformat:-2 }}</p> <!-- Removes unnecessary trailing zeroes -->
 
-  <!-- Date and Time formatting -->
+  <!-- 8. Using date/time filters to format datetime -->
   <h2>8. Date and Time Formatting</h2>
-  <p>Raw datetime: {{ dt }}</p>
-  <p>Date only: {{ dt|date:"Y-m-d" }}</p>
-  <p>Time only: {{ dt|time:"H:i:s" }}</p>
-  <p>Full datetime formatted: {{ dt|date:"D d M Y H:i" }}</p>
+  <p>Raw datetime: {{ dt }}</p> <!-- Original datetime -->
+  <p>Date only: {{ dt|date:"Y-m-d" }}</p> <!-- Formats to Year-Month-Day -->
+  <p>Time only: {{ dt|time:"H:i:s" }}</p> <!-- Formats to Hour:Minute:Second -->
+  <p>Full datetime formatted: {{ dt|date:"D d M Y H:i" }}</p> <!-- Full readable format -->
 
-  <!-- Safe filter -->
+  <!-- 9. Using safe filter to allow HTML rendering from a variable -->
   <h2>9. Safe Filter (Render HTML inside variable)</h2>
-  <p>Without safe: {{ html_content }}</p>
-  <p>With safe: {{ html_content|safe }}</p>
+  <p>Without safe: {{ html_content }}</p> <!-- Escaped (renders as plain text) -->
+  <p>With safe: {{ html_content|safe }}</p> <!-- Rendered as HTML (bold text) -->
 
-  <!-- Escaping characters -->
+  <!-- 10. Using autoescape to control HTML escaping manually -->
   <h2>10. Escaping</h2>
-  <p>{% autoescape on %}{{ html_content }}{% endautoescape %}</p>
-  <p>{% autoescape off %}{{ html_content }}{% endautoescape %}</p>
+  <p>{% autoescape on %}{{ html_content }}{% endautoescape %}</p> <!-- HTML tags will be escaped -->
+  <p>{% autoescape off %}{{ html_content }}{% endautoescape %}</p> <!-- HTML tags will be rendered -->
 
 </body>
 </html>
