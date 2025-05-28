@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Ye line browser ko batati hai ki ye document HTML5 standard follow karta hai -->
+
+{% load static %}
+<!--
+  Django template tag 'load static' se static files ko access karne ke liye functionality enable hoti hai.
+  Static files matlab CSS, JS, images jo hum website mein use karte hain.
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--
+      Ye meta tag page ki character encoding specify karta hai, yahan UTF-8 use hua hai jo almost sabhi languages ko support karta hai.
+    -->
+
+    <link rel="stylesheet" href="{% static 'course/css/style.css' %}">
+    <!--
+      Ye line external CSS file ko page ke saath link karti hai.
+      Django ka static template tag use karke hum 'course/css/style.css' file ko reference kar rahe hain.
+      Isse stylesheet load hoke page ke design ko control karega.
+    -->
+
+    <title>Django Template</title>
+    <!-- Page ka title jo browser tab mein dikhega -->
+</head>
+<body>
+    <h1>Hello {{ name }}</h1>
+    <!--
+      Ye ek heading hai jo dynamic content show karti hai.
+      {{ name }} Django template variable hai, jo view se pass kiya jata hai.
+      Example: agar name="Aman", to page pe "Hello Aman" dikhega.
+    -->
+
+    <img src="{% static 'course/images/img.jpg' %}" alt="Logo" width="200px"/>
+    <!--
+      Static image file ko page mein show kar raha hai.
+      'alt' attribute image ke load na hone par text dikhata hai.
+      Width set kiya hai 200 pixels.
+    -->
+
+    <img src="{% static get_static_prefix %}course/images/img.jpg" alt="Logo 2" width="300px" />
+    <!--
+      Yahan thoda alag tarika use hua hai image ko load karne ke liye.
+      'get_static_prefix' ek Django ka function hai jo static files ka base URL deta hai.
+      Is tarah image ko bhi static folder se load kar rahe hain.
+      Width 300 pixels rakha gaya hai.
+    -->
+
+    <form action="">
+        <input type="button" value="Click ME!" onclick="clickMe()" />
+        <!--
+          Ye ek button hai jo click hone par JavaScript function 'clickMe()' ko call karega.
+          Form ka 'action' attribute blank hai, matlab form submit nahi hoga, sirf button ka click event handle hoga.
+        -->
+    </form>
+
+    <script src="{% static 'course/js/script.js' %}"></script>
+    <!--
+      External JavaScript file ko load karta hai.
+      'script.js' mein 'clickMe()' function defined hoga, jo button click par kuch action karega.
+    -->
+</body>
+</html>
