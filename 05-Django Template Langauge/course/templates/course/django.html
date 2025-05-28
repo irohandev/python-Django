@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Django Template Showcase</title>
+</head>
+<body>
+
+  <h1>Django Template Example Showcase</h1>
+
+  <!-- Basic Variable Display -->
+  <h2>1. Display Variables</h2>
+  <p>Course Name: {{ name }}</p>
+  <p>Duration: {{ duration }}</p>
+  <p>Total Seats: {{ seats }}</p>
+
+  <!-- If Tag -->
+  <h2>2. Conditional Rendering (if/else)</h2>
+  {% if name %}
+    <p>Hello, the course name is available.</p>
+  {% else %}
+    <p>No course name provided.</p>
+  {% endif %}
+
+  <!-- for loop with list -->
+  <h2>3. Looping Through List</h2>
+  <ul>
+    {% for student in students %}
+      <li>{{ forloop.counter }}. {{ student }}</li>
+    {% empty %}
+      <li>No students found.</li>
+    {% endfor %}
+  </ul>
+
+  <!-- for loop with dictionary -->
+  <h2>4. Looping Through Dictionary</h2>
+  <ul>
+    {% for key, value in course_info.items %}
+      <li><strong>{{ key|capfirst }}:</strong> {{ value }}</li>
+    {% endfor %}
+  </ul>
+
+  <!-- Template Filters -->
+  <h2>5. Template Filters</h2>
+  <p>Uppercase: {{ name|upper }}</p>
+  <p>Lowercase: {{ name|lower }}</p>
+  <p>First letter capital: {{ name|capfirst }}</p>
+  <p>Word Truncate (3): {{ duration|truncatewords:3 }}</p>
+  <p>Char Truncate (10): {{ duration|truncatechars:10 }}</p>
+  <p>Slice (first 6 chars): {{ name|slice:":6" }}</p>
+  <p>Length of name: {{ name|length }}</p>
+
+  <!-- Default filter for empty/None -->
+  <h2>6. Default Filter (Fallback Value)</h2>
+  <p>Empty var: {{ empty_var|default:"No value provided" }}</p>
+  <p>None var: {{ none_var|default_if_none:"Null value replaced" }}</p>
+
+  <!-- Float formatting -->
+  <h2>7. Float Format</h2>
+  <p>p1 (3 decimal): {{ p1|floatformat:3 }}</p>
+  <p>p2 (0 decimal): {{ p2|floatformat:0 }}</p>
+  <p>p3 (default): {{ p3|floatformat }}</p>
+  <p>p3 (remove trailing zero): {{ p3|floatformat:-2 }}</p>
+
+  <!-- Date and Time formatting -->
+  <h2>8. Date and Time Formatting</h2>
+  <p>Raw datetime: {{ dt }}</p>
+  <p>Date only: {{ dt|date:"Y-m-d" }}</p>
+  <p>Time only: {{ dt|time:"H:i:s" }}</p>
+  <p>Full datetime formatted: {{ dt|date:"D d M Y H:i" }}</p>
+
+  <!-- Safe filter -->
+  <h2>9. Safe Filter (Render HTML inside variable)</h2>
+  <p>Without safe: {{ html_content }}</p>
+  <p>With safe: {{ html_content|safe }}</p>
+
+  <!-- Escaping characters -->
+  <h2>10. Escaping</h2>
+  <p>{% autoescape on %}{{ html_content }}{% endautoescape %}</p>
+  <p>{% autoescape off %}{{ html_content }}{% endautoescape %}</p>
+
+</body>
+</html>
