@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Declares the document type as HTML5 -->
+
+<html lang="en">
+<!-- Starts the HTML document and sets the language to English -->
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Sets character encoding to UTF-8 to support all characters -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ensures the website is responsive and scales properly on all devices -->
+
+  <title>{% block title %} {% endblock title %}</title>
+  <!-- 
+    Django template block for setting the page title.
+    This allows child templates to insert their own title inside this block.
+  -->
+</head>
+
+<body>
+  {% block content %} {% endblock content %}
+  <!-- 
+    Main content block where child templates can insert their content.
+    This is typically where page-specific content goes.
+  -->
+
+  <ul>
+    <li>Home</li>
+    <li>Django</li>
+    <li>Python</li>
+  </ul>
+  <!-- 
+    Static navigation list. You could later convert these into real links (e.g., <a href="#">Home</a>)
+  -->
+
+  {% block hero %} {% endblock hero %}
+  <!-- 
+    Optional block for adding a 'hero section' (typically a big banner or main message).
+    Child templates can override this section to show something prominent.
+  -->
+
+  {% block footer %} {% endblock footer %}
+  <!-- 
+    Footer block where child templates can insert footer content (like contact info, copyright).
+  -->
+</body>
+</html>

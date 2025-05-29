@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+<!-- 
+  This line tells Django that this template is extending the base template named 'base.html',
+  which is located in the 'core' app's templates folder.
+-->
+
+{% block title %}
+  Python Page
+{% endblock title %}
+<!-- 
+  This fills in the 'title' block defined in the base template.
+  It sets the <title> of the HTML page to "Python Page".
+-->
+
+{% block content %}
+  <h1>Python Page</h1>
+{% endblock content %}
+<!-- 
+  This replaces the 'content' block in the base template.
+  It adds a heading "Python Page" to the main content area.
+-->
+
+{% block footer %}
+  <h3>Footer</h3>
+{% endblock footer %}
+<!-- 
+  This overrides the 'footer' block from the base template.
+  It adds an <h3>Footer</h3> at the bottom of the page.
+-->
