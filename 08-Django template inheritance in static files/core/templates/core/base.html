@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <!-- Declares the document type as HTML5 -->
 
+{% load static %}
+<!-- 
+  Loads Django's static files template tag library.
+  This is necessary to use the {% static %} tag for including static assets like CSS, JS, and images.
+-->
+
 <html lang="en">
 <!-- Starts the HTML document and sets the language to English -->
 
 <head>
   <meta charset="UTF-8">
-  <!-- Sets character encoding to UTF-8 to support all characters -->
+  <!-- Sets character encoding to UTF-8 to support a wide range of characters from different languages -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Ensures the website is responsive and scales properly on all devices -->
+  <!-- 
+    Makes the page responsive by controlling layout on mobile browsers.
+    Ensures the page scales correctly on all devices (phones, tablets, desktops).
+  -->
 
   <title>{% block title %} {% endblock title %}</title>
   <!-- 
-    Django template block for setting the page title.
-    This allows child templates to insert their own title inside this block.
+    A block tag for setting the <title> of the page (shown in the browser tab).
+    Child templates can override this block to insert their own page title.
+  -->
+
+  {% block corecss %}
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}"> 
+  {% endblock corecss %}
+  <!-- 
+    Block to load core CSS styles.
+    The {% static %} tag generates the correct URL to the CSS file.
+    Child templates can override this block to include additional or different stylesheets.
   -->
 </head>
 
 <body>
   {% block content %} {% endblock content %}
   <!-- 
-    Main content block where child templates can insert their content.
-    This is typically where page-specific content goes.
+    Main block for page content.
+    Child templates will insert their specific content here.
   -->
 
   <ul>
@@ -31,18 +49,20 @@
     <li>Python</li>
   </ul>
   <!-- 
-    Static navigation list. You could later convert these into real links (e.g., <a href="#">Home</a>)
+    A static navigation list (not linked).
+    Can be updated later to include actual navigation links with <a> tags.
   -->
 
   {% block hero %} {% endblock hero %}
   <!-- 
-    Optional block for adding a 'hero section' (typically a big banner or main message).
-    Child templates can override this section to show something prominent.
+    Optional block for a 'hero section' – typically a large, eye-catching banner or message.
+    Child templates can override this to add important visuals or headlines.
   -->
 
   {% block footer %} {% endblock footer %}
   <!-- 
-    Footer block where child templates can insert footer content (like contact info, copyright).
+    Footer block to insert footer content.
+    Child templates can override this to add things like contact info, social links, etc.
   -->
 </body>
 </html>

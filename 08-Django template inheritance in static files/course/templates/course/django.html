@@ -4,12 +4,25 @@
   It inherits the overall structure and layout defined there.
 -->
 
+{% load static %}
+<!-- 
+  This loads the 'static' template tag library so that static files like CSS, JavaScript, and images can be used with the {% static %} tag.
+-->
+
 {% block title %}
   Django Page
 {% endblock title %}
 <!-- 
   This sets the HTML <title> tag (shown on the browser tab) to "Django Page"
   by filling the 'title' block from the base template.
+-->
+
+{% block corecss %}
+  <link rel="stylesheet" href="{% static 'course/css/style.css' %}"> 
+{% endblock corecss %}
+<!-- 
+  This defines the 'corecss' block from the base template and includes a custom CSS file for styling the page.
+  The {% static %} tag generates the correct URL for the static CSS file located at 'course/css/style.css'.
 -->
 
 {% block content %}
