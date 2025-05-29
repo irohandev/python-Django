@@ -1,0 +1,15 @@
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'learn_django' %}">Django</a></li>
+    <li><a href="{% url 'learn_python' %}">Python</a></li>
+
+    {% url 'learn_python' as py %}
+    <li><a href="{{ py }}">Python</a></li>
+  </ul>
+  {% comment %}
+  This is a dynamic navigation menu using Django's `{% url %}` tag.
+  It resolves the URL patterns defined in your `urls.py` file.
+  The `{% url 'learn_python' as py %}` syntax stores the URL in a variable called `py`, 
+  which is then reused in the next `<a>` tag.
+  This makes the code cleaner and avoids repetition.
+  {% endcomment %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+{# 
+  Declares the document type as HTML5. 
+  Ensures the browser renders the page using the latest HTML standard.
+  The {% load static %} tag loads Django’s static template tag library.
+  This is necessary to reference static files (like CSS, JS, images) using the {% static %} tag.
+#}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {# 
+    Sets the character encoding to UTF-8. 
+    This allows the webpage to correctly display a wide range of characters from different languages.
+  #}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {# 
+    Makes the webpage responsive by controlling the layout on mobile browsers. 
+    It ensures proper scaling and rendering on different device sizes (phones, tablets, desktops).
+  #}
+
+  <title>{% block title %} {% endblock title %}</title>
+  {# 
+    A Django template block for inserting the <title> content dynamically.
+    Child templates that extend this base template can override the 'title' block to set a custom title.
+  #}
+
+  {% block corecss %}
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}"> 
+  {% endblock corecss %}
+  {# 
+    This block allows child templates to include or override CSS stylesheets.
+    The {% static %} tag constructs the correct URL path to the static CSS file.
+    The default file included here is located at 'core/css/style.css'.
+  #}
+</head>
+
+<body>
+  {% block content %} {% endblock content %}
+  {# 
+    Main content block. This is where each child page will insert its specific content. 
+    For example, a homepage might display a welcome message or list of features here.
+  #}
+
+  <ul>
+    <li><a href="">Home</a></li>
+    <li><a href="/course/dj">Django</a></li>
+    <li><a href="/course/py">Python</a></li>
+  </ul>
+  {# 
+    A basic navigation menu with links to different sections of the site. 
+    These links are currently hard-coded, but they can be dynamically generated in more advanced templates.
+  #}
+
+  <hr>
+  {# 
+    A horizontal rule to visually separate the navigation/menu from the rest of the page content.
+  #}
+
+  {% include 'core/components/navbar.html' %}
+  {# 
+    This includes another template file — 'navbar.html' — located in the 'core/components' directory.
+    This is useful for reusing common elements like headers, navigation bars, or footers across multiple pages.
+  #}
+
+  {% block hero %} {% endblock hero %}
+  {# 
+    Optional block for a "hero" section — a visually prominent area typically used on homepages 
+    to highlight a welcome message, key information, or call-to-action.
+  #}
+
+  {% block footer %} {% endblock footer %}
+  {# 
+    Footer block for placing content like copyright info,
+    social media links, or contact details at the bottom of the page.
+  #}
+</body>
+</html>
