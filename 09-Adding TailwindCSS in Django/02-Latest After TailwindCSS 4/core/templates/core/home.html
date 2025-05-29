@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+<!-- 
+  This line tells Django that this template extends 'core/base.html',
+  inheriting its structure and blocks.
+-->
+
+{% block title %}
+  Home Page
+{% endblock title %}
+<!-- 
+  Fills the 'title' block from the base template.
+  This sets the browser tab title to "Home Page".
+-->
+
+{% block content %}
+  <h1>Home Page</h1>
+{% endblock content %}
+<!-- 
+  Fills the 'content' block with a heading for the home page.
+  This is the main content users will see.
+-->
+
+{% block hero %}
+  <h3 class="bg-red-500 underline">Home Page's hero section!</h3>
+{% endblock hero %}
+<!-- 
+  Fills the 'hero' block defined in the base template.
+  This is typically used for a prominent banner or intro message.
+-->
