@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+<!-- 
+  This template extends the base template located at 'core/base.html'.
+  It inherits the overall structure and layout defined there.
+-->
+
+{% load static %}
+<!-- 
+  This loads the 'static' template tag library so that static files like CSS, JavaScript, and images can be used with the {% static %} tag.
+-->
+
+{% block title %}
+  Django Page
+{% endblock title %}
+<!-- 
+  This sets the HTML <title> tag (shown on the browser tab) to "Django Page"
+  by filling the 'title' block from the base template.
+-->
+
+{% block corecss %}
+  <link rel="stylesheet" href="{% static 'course/css/style.css' %}"> 
+{% endblock corecss %}
+<!-- 
+  This defines the 'corecss' block from the base template and includes a custom CSS file for styling the page.
+  The {% static %} tag generates the correct URL for the static CSS file located at 'course/css/style.css'.
+-->
+
+{% block content %}
+  <h1>Django Page</h1>
+{% endblock content %}
+<!-- 
+  This fills the 'content' block from the base template.
+  It displays an <h1> heading with the text "Django Page".
+-->
+
+{% block footer %}
+  <h3>Footer</h3>
+{% endblock footer %}
+<!-- 
+  This overrides the 'footer' block in the base template.
+  It adds a footer section with a heading "Footer".
+-->
