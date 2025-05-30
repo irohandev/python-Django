@@ -14,3 +14,10 @@ class Profile(models.Model):
 
     # 'roll' can store any kind of identifier (like roll number or ID), max length set to 100 characters
     roll = models.CharField(max_length=100)
+
+
+    # 'state' will store the user's state, max length set to 100 characters
+    state = models.CharField(max_length=100)  
+
+     # 'comments' will store additional comments, with a max length of 300 characters and a default value
+    comments = models.TextField(max_length=300, default='Nothing to show') 
