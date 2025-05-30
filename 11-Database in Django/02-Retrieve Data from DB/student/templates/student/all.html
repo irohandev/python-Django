@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Makes the page responsive on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Students</title>
+</head>
+<body>
+    <!-- Page main heading -->
+    <h1>All Students Data</h1>
+
+    <!-- Check if 'students' list has data -->
+    {% if students %}
+        <h2>Student List</h2>
+
+        <!-- Start of unordered list -->
+        <ul>
+            <!-- Loop through each student object in 'students' -->
+            {% for student in students %}
+                <li>
+                    <!-- Display name, city, and email of each student -->
+                    {{ student.name }} - {{ student.city }} - {{ student.email }}
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- End of student loop -->
+
+    {% else %}
+        <!-- Message shown if no data is available -->
+        <h2>No Data Found</h2>
+    {% endif %}
+</body>
+</html>

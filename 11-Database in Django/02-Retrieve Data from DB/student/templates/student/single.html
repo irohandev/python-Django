@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures proper scaling and responsiveness on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+</head>
+<body>
+    <!-- Main heading of the page -->
+    <h1>Single Student's Data</h1>
+
+    <!-- Check if 'student' object is available in the context -->
+    {% if student %}
+        <!-- Display student data if available -->
+        <h2>Student</h2>
+        <h3>{{ student.name }} - {{ student.email }} - {{ student.city }}</h3>
+    {% else %}
+        <!-- Show this message if no student object is passed -->
+        <h2>No Data</h2>
+    {% endif %}
+</body>
+</html>
