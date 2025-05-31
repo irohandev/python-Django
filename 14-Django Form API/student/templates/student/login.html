@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- Declares the document type as HTML5. It helps the browser understand how to interpret the HTML. -->
+
+<html lang="en">
+<!-- Starts the HTML document. The language is set to English. -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Sets the character encoding to UTF-8, allowing the use of most characters and symbols. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ensures the page is responsive and scales properly on different devices like mobiles and tablets. -->
+
+    <title>Document</title>
+    <!-- Sets the title of the webpage, which appears in the browser tab. -->
+</head>
+
+<body>
+    <h1>Login Page</h1>
+    <!-- Displays a heading on the page: "Login Page" -->
+
+    <form action="">
+        <!-- Starts the form. The 'action' is currently empty, meaning the form will submit to the same URL or it can be set later. -->
+
+        {{form}}
+        <!-- Renders the Django form passed from the backend view. It will automatically generate the HTML for all form fields. -->
+
+        <input type="submit" value="Login">
+        <!-- A submit button that sends the form data when clicked. It shows the text "Login" on the button. -->
+    </form>
+</body>
+</html>

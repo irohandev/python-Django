@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Declares the document type as HTML5. Helps the browser understand the HTML version. -->
+
+<html lang="en">
+<!-- Begins the HTML document. 'lang="en"' specifies the language of the content is English. -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Sets the character encoding to UTF-8, which supports special characters. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enables responsive design. Ensures the page scales properly on mobile and other devices. -->
+
+    <title>Document</title>
+    <!-- Sets the title of the webpage. This appears on the browser tab. -->
+</head>
+
+<body>
+    <h1>Student Registration</h1>
+    <!-- Displays a main heading: "Student Registration" -->
+
+    <form action="">
+        <!-- Starts a form. The 'action' is currently empty, so the form will submit to the same page or be set later. -->
+
+        {{form}} 
+        <!-- Renders the entire Django form if uncommented. Not currently inside a comment block. -->
+
+        {% comment %} {{form.as_table}} {% endcomment %}
+        <!-- Renders the Django form as an HTML table. Currently commented out, so it won’t appear. -->
+
+        {% comment %} 
+        <ul>
+            {{form.as_ul}}
+        </ul> 
+        {% endcomment %}
+        <!-- Renders the form fields as an unordered list. Also commented out. -->
+
+        {% comment %} {{form.as_p}} {% endcomment %}
+        <!-- Renders the form fields wrapped in paragraph tags. Commented out. -->
+
+        {% comment %} {{form.first_name}} {% endcomment %}
+        <!-- Renders only the 'first_name' field of the form. Also commented out. -->
+
+        <button type="submit">Submit</button>
+        <!-- Creates a button to submit the form. -->
+    </form>
+</body>
+</html>
