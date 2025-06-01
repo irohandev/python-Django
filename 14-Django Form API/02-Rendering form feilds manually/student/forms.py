@@ -14,3 +14,10 @@ class Registration(forms.Form):
 
     # Input field for user's city (text field)
     city = forms.CharField()
+
+
+class Address(forms.Form):
+    name = forms.CharField()
+    city = forms.CharField()
+    state = forms.CharField()
+    pin_code = forms.IntegerField()

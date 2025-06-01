@@ -10,10 +10,44 @@
 
 <body>
     <h1>Student Registration</h1>
-
+{% comment %} 
     <form action="">
         {{form}}
         <button type="submit">Submit</button>
-    </form>
+    </form> {% endcomment %}
+ 
+    {% comment %} Form Input by Input {% endcomment %}
+    {% comment %} <form action="">
+        First Name: {{form.fisrt_name}} <br>
+        Last Name: {{form.last_name}}     
+    </form>  {% endcomment %}
+
+    
+    {% comment %} Form Label & Input by Label & Input {% endcomment %}
+    {% comment %} <form action="">
+        <label for="{{form.first_name.id_for_label}}">{{form.first_name.label}}</label> {{form.fisrt_name}} <br>
+        <label for="{{form.last_name.id_for_label}}">{{form.first_name.label}}</label> {{form.last_name}} <br>    
+    </form>  {% endcomment %}
+
+
+    {% comment %} Form Label & Input by Label & Input {% endcomment %}
+    {% comment %} <form action="">
+        <label for="{{form.first_name.id_for_label}}"> First Name : </label>
+        <input type="text" name = "{{form.first_name.label}} " required id="{{form.first_name.id_for_label}} value="{{form.first_name.value|default:''}}">
+
+        <label for="{{form.last_name.id_for_label}}"> Last Name : </label>
+        <input type="text" name = "{{form.last_name.label}} " required id="{{form.last_name.id_for_label}} value="{{form.last_name.value|default:''}}">
+
+        <label for="{{form.email.id_for_label}}"> Email : </label>
+        <input type="text" name = "{{form.email.label}} " required id="{{form.email.id_for_label}} value="{{form.email.value|default:'test@example.com'}}">
+    </form>  {% endcomment %}
+
+    {% comment %} <div>
+        {{form.first_name.label}}
+        {{form.first_name.value}}
+        {{form.first_name.html_name}}
+        {{form.first_name.feild.required}}
+        {{form.city.help_text}}
+    </div> {% endcomment %}
 </body>
 </html>
