@@ -1,32 +1,74 @@
 <!DOCTYPE html>
+<!-- Declares the document type as HTML5 -->
 
 <html lang="en">
+<!-- The root element of the HTML document, with English as the language -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- Sets the character encoding to UTF-8, supporting most characters -->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes the webpage responsive by setting the viewport to the device's width -->
+
     <title>Document</title>
+    <!-- Title of the web page shown on the browser tab -->
 </head>
 
 <body>
     <h1>Student Address!</h1>
-    {% comment %} <form action="">
+    <!-- Main heading of the page -->
+
+    {% comment %} 
+    <!-- Django Template comment block. This part is ignored by the server and not rendered in HTML -->
+
+    <!-- First attempt: directly rendering the entire form object -->
+    <form action="">
         {{form}}
-    </form> {% endcomment %}
+    </form> 
+    {% endcomment %}
 
 
-    {% comment %} <form action="">
-        {% for field in form %}
-            {{ field.label_tag }}
-            {{ field }}
-        {% endfor %}
-    </form> {% endcomment %}
-
-
+    {% comment %} 
+    <!-- Second attempt: looping over each field in the form to render them manually -->
     <form action="">
         {% for field in form %}
-        <label for="{{field.id_for_label}}" class="">{{field.label}}</label>
-        <input class="" type="{{field.field.widget.input_type}}" name="{{field.name}}" required id="{{field.id_for_label}} value="{{field.value|default:''}}" placeholder="{{field.field.widget.attrs.placeholder|default:''}}" required="{{field.field.required}}" <br>
+            {{ field.label_tag }}
+            <!-- Outputs the HTML label for the field -->
+
+            {{ field }}
+            <!-- Outputs the actual form input field -->
+        {% endfor %}
+    </form> 
+    {% endcomment %}
+
+
+    <!-- Final version: custom rendering each field using manual <label> and <input> -->
+    <form action="">
+        {% for field in form %}
+        <!-- Loop through each field in the Django form -->
+
+        <label for="{{field.id_for_label}}" class="">
+            <!-- Sets the label for each field with the corresponding ID -->
+            {{field.label}}
+            <!-- Displays the label text -->
+        </label>
+
+        <input 
+            class="" 
+            type="{{field.field.widget.input_type}}" 
+            name="{{field.name}}" 
+            required 
+            id="{{field.id_for_label}}" 
+            value="{{field.value|default:''}}" 
+            placeholder="{{field.field.widget.attrs.placeholder|default:''}}" 
+            required="{{field.field.required}}"
+        >
+        <!-- Custom rendering of input field using properties from Django form field -->
+        <!-- Uses filters like 'default' to prevent errors if values are missing -->
+
+        <br>
+        <!-- Line break after each input for spacing -->
         {% endfor %}
     </form>
 </body>
