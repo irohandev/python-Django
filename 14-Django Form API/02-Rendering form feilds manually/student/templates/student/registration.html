@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+    <!-- Basic metadata for character encoding and responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -10,44 +10,97 @@
 
 <body>
     <h1>Student Registration</h1>
-{% comment %} 
-    <form action="">
-        {{form}}
+
+    {# =============================== 
+       1. RENDER WHOLE FORM DIRECTLY 
+       =============================== #}
+    {% comment %} 
+    <!-- This renders the entire form using Django's default widget rendering -->
+    <form action="" method="POST">
+        {{ form }}
+        <!-- Submit button to submit the form -->
         <button type="submit">Submit</button>
-    </form> {% endcomment %}
- 
-    {% comment %} Form Input by Input {% endcomment %}
-    {% comment %} <form action="">
-        First Name: {{form.fisrt_name}} <br>
-        Last Name: {{form.last_name}}     
-    </form>  {% endcomment %}
-
-    
-    {% comment %} Form Label & Input by Label & Input {% endcomment %}
-    {% comment %} <form action="">
-        <label for="{{form.first_name.id_for_label}}">{{form.first_name.label}}</label> {{form.fisrt_name}} <br>
-        <label for="{{form.last_name.id_for_label}}">{{form.first_name.label}}</label> {{form.last_name}} <br>    
-    </form>  {% endcomment %}
+    </form> 
+    {% endcomment %}
 
 
-    {% comment %} Form Label & Input by Label & Input {% endcomment %}
-    {% comment %} <form action="">
-        <label for="{{form.first_name.id_for_label}}"> First Name : </label>
-        <input type="text" name = "{{form.first_name.label}} " required id="{{form.first_name.id_for_label}} value="{{form.first_name.value|default:''}}">
+    {# ================================= 
+       2. RENDER FIELD BY FIELD (SIMPLE)
+       ================================= #}
+    {% comment %} 
+    <!-- This renders specific fields from the form individually -->
+    <form action="" method="POST">
+        <!-- Note: 'fisrt_name' has a typo; should be 'first_name' -->
+        First Name: {{ form.first_name }} <br>
+        Last Name: {{ form.last_name }}
+    </form>  
+    {% endcomment %}
 
-        <label for="{{form.last_name.id_for_label}}"> Last Name : </label>
-        <input type="text" name = "{{form.last_name.label}} " required id="{{form.last_name.id_for_label}} value="{{form.last_name.value|default:''}}">
 
-        <label for="{{form.email.id_for_label}}"> Email : </label>
-        <input type="text" name = "{{form.email.label}} " required id="{{form.email.id_for_label}} value="{{form.email.value|default:'test@example.com'}}">
-    </form>  {% endcomment %}
+    {# ========================================================= 
+       3. RENDER FIELD LABELS AND FIELDS USING DJANGO ATTRIBUTES 
+       ========================================================= #}
+    {% comment %} 
+    <!-- This version displays the label and field using template variables -->
+    <form action="" method="POST">
+        <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label> 
+        {{ form.first_name }} <br>
 
-    {% comment %} <div>
-        {{form.first_name.label}}
-        {{form.first_name.value}}
-        {{form.first_name.html_name}}
-        {{form.first_name.feild.required}}
-        {{form.city.help_text}}
-    </div> {% endcomment %}
+        <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label> 
+        {{ form.last_name }} <br>
+    </form>  
+    {% endcomment %}
+
+
+    {# =============================================================== 
+       4. FULLY CUSTOMIZED HTML INPUT TAGS WITH DEFAULT VALUES & IDS 
+       =============================================================== #}
+    {% comment %} 
+    <!-- This gives full control over form rendering; useful for custom styling or adding JS -->
+    <form action="" method="POST">
+        <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+        <input 
+            type="text" 
+            name="{{ form.first_name.html_name }}" 
+            required 
+            id="{{ form.first_name.id_for_label }}" 
+            value="{{ form.first_name.value|default:'' }}"
+        > <br>
+
+        <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+        <input 
+            type="text" 
+            name="{{ form.last_name.html_name }}" 
+            required 
+            id="{{ form.last_name.id_for_label }}" 
+            value="{{ form.last_name.value|default:'' }}"
+        > <br>
+
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        <input 
+            type="email" 
+            name="{{ form.email.html_name }}" 
+            required 
+            id="{{ form.email.id_for_label }}" 
+            value="{{ form.email.value|default:'test@example.com' }}"
+        > <br>
+    </form>  
+    {% endcomment %}
+
+
+    {# ============================= 
+       5. DEBUGGING / FORM METADATA 
+       ============================= #}
+    {% comment %} 
+    <!-- Useful for debugging or displaying metadata about a form field -->
+    <div>
+        {{ form.first_name.label }}  <!-- Displays the label of the field -->
+        {{ form.first_name.value }}  <!-- Displays the current value -->
+        {{ form.first_name.html_name }}  <!-- Shows the 'name' used in the input -->
+        {{ form.first_name.field.required }}  <!-- Returns True/False -->
+        {{ form.city.help_text }}  <!-- Optional help text for guidance -->
+    </div> 
+    {% endcomment %}
+
 </body>
 </html>
